@@ -42,5 +42,6 @@ public class CourseService implements CRUDService<Course> {
                 .findFirst().orElseThrow();
         Database.courseList.removeIf(p -> p.id == id);
 
+
     }
 }
