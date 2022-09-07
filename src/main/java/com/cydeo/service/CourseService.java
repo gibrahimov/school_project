@@ -37,11 +37,9 @@ public class CourseService implements CRUDService<Course> {
 
     @Override
     public void deleteById(int id) {
-        Database.courseList.stream()
-                .filter(p->p.getId()==id)
-                .findFirst().orElseThrow();
-        Database.courseList.removeIf(p -> p.id == id);
-
-
+        boolean isDeleted = Database.courseList.removeIf(p -> p.id == id);
+        if (!isDeleted) {
+            throw new NoSuchElementException();
+        }
     }
 }
